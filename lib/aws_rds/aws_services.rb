@@ -2,6 +2,6 @@ require 'aws-sdk-rds'
 
 module AwsRds::AwsServices
   def rds
-    @rds ||= Aws::Rds::Client.new
+    @rds ||= Aws::RDS::Client.new
   end
 end

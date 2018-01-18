@@ -1,0 +1,9 @@
+---
+allocated_storage: 20
+db_instance_class: db.t2.micro
+db_instance_identifier: my-db
+master_user_password: MyPassword
+master_username: MyUser
+engine: postgres
+# For more help with the available params see:
+# https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/Client.html#create_db_instance-instance_method

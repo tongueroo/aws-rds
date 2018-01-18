@@ -5,6 +5,7 @@ module AwsRds
 
     desc "create NAME", "create database"
     long_desc Help.text(:create)
+    option :profile, desc: "profile to use"
     option :password, desc: "password"
     def create(name="you")
       Create.new(options.merge(name: name)).run
