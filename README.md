@@ -12,13 +12,13 @@ Then `my-db.yml` gets combined with `default.yml` profile.  The `default.yml` ta
 ## Usage
 
 ```sh
-$ aws-rds create my-db --profile my-db
+$ aws-rds create my-db --profile my-db --db-name mydbname
 ```
 
 By convention, the profile is name of the db.  So the command above can be shortened to:
 
 ```
-$ aws-rds create my-db
+$ aws-rds create my-db --db-name mydbname
 ```
 
 ## Installation
