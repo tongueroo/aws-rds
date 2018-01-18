@@ -7,4 +7,5 @@ module AwsRds
   autoload :CLI, "aws_rds/cli"
   autoload :AwsServices, "aws_rds/aws_services"
   autoload :Create, "aws_rds/create"
+  autoload :SecurityGroup, "aws_rds/security_group"
 end

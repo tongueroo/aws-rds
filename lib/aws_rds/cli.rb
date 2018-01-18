@@ -9,6 +9,8 @@ module AwsRds
     option :db_name, desc: "database name"
     option :db_user, desc: "database user"
     option :db_password, desc: "database password"
+    option :security_group, type: :boolean, default: true, desc: "use separate security group"
+    option :security_group_name, desc: "optional. security group name"
     def create(name)
       Create.new(options.merge(name: name)).run
     end

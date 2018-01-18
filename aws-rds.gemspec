@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "hashie"
   spec.add_dependency "colorize"
   spec.add_dependency "aws-sdk-rds"
+  spec.add_dependency "aws-sdk-ec2"
   spec.add_dependency "activesupport"
 
   spec.add_development_dependency "bundler"

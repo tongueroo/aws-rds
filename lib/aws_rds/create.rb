@@ -36,7 +36,18 @@ module AwsRds
       params = load_profile(profile_file)
       params = defaults.merge(params)
       params = use_database_cli_options(params)
+      params = set_security_groups(params)
       params.symbolize_keys
+    end
+
+    def set_security_groups(params)
+      return params unless @options[:security_group]
+      return params if @options[:noop]
+
+      security_group_name = @options[:security_group_name] || @options[:name]
+      sg = SecurityGroup.find_or_create(security_group_name)
+      params['vpc_security_group_ids'] ||= [sg.group_id]
+      params
     end
 
     # Be able to set the common database options with the CLI options.
@@ -44,8 +55,8 @@ module AwsRds
     def use_database_cli_options(params)
       params['db_instance_identifier'] = @options[:name] # required
       params['db_name'] = @options[:db_name] if @options[:db_name]
-      params['master_username'] = @options[:db_user]
-      params['master_user_password'] = @options[:db_password]
+      params['master_username'] = @options[:db_user] if @options[:db_user]
+      params['master_user_password'] = @options[:db_password] if @options[:db_password]
       params
     end
 
