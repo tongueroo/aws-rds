@@ -35,12 +35,17 @@ module AwsRds
       defaults = load_profile(default_file)
       params = load_profile(profile_file)
       params = defaults.merge(params)
-      params = set_database_identifier(params)
+      params = use_database_cli_options(params)
       params.symbolize_keys
     end
 
-    def set_database_identifier(params)
-      params['db_instance_identifier'] = @options[:name]
+    # Be able to set the common database options with the CLI options.
+    # Other options can be set with the profile files.
+    def use_database_cli_options(params)
+      params['db_instance_identifier'] = @options[:name] # required
+      params['db_name'] = @options[:db_name] if @options[:db_name]
+      params['master_username'] = @options[:db_user]
+      params['master_user_password'] = @options[:db_password]
       params
     end
 
