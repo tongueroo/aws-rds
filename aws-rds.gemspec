@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = AwsRds::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{RDS db creation tool}
+  spec.summary       = %q{RDS db creation tool}
+  spec.homepage      = "https://github.com/tongueroo/aws-rds"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor"
   spec.add_dependency "hashie"
   spec.add_dependency "colorize"
+  spec.add_dependency "aws-sdk-rds"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
