@@ -12,6 +12,11 @@ module AwsRds
     def run
       puts "Creating RDS database #{@options[:name]} with the following parameters:"
       pp params
+      if @options[:noop]
+        puts "NOOP mode enabled. RDS instance not created."
+        return
+      end
+
       resp = rds.create_db_instance(params)
       puts "RDS database #{@options[:name]} created! 🎉"
       puts "Visit https://console.aws.amazon.com/rds/home?#dbinstances to check on the status"
@@ -42,8 +47,9 @@ module AwsRds
     def load_profile(file)
       return {} unless File.exist?(file)
 
+      puts "Using #{file}"
       data = YAML.load_file(file)
-      data ? data : {}
+      data ? data : {} # in case the file is empty
     end
 
     def profile_name
