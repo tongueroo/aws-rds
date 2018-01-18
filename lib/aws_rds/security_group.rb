@@ -10,7 +10,7 @@ module AwsRds
         puts "Creating security group #{name}"
         result = ec2.create_security_group(group_name: name, description: name)
         ec2.create_tags(
-          resources: [result.group_id]
+          resources: [result.group_id],
           tags: [{ key: "Name", value: name }],
         )
         resp = ec2.describe_security_groups(group_ids: [result.group_id])
