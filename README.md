@@ -1,34 +1,27 @@
-# AwsRds
+# AWS RDS Tool
 
-[![Build Status](https://magnum.travis-ci.com/)](https://magnum.travis-ci.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
-[![Code Climate](https://codeclimate.com/)](https://codeclimate.com/)
+Simple tool to create AWS RDS db instances with some pre-configured settings.
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```sh
-gem "aws-rds"
-```
-
-And then execute:
-
-```sh
-$ bundle
-```
-
-Or install it yourself as:
-
-```sh
-$ gem install aws-rds
-```
 ## Usage
 
 ```sh
-aws-rds hello yourname
+aws-rds create my-db
+```
+
+## Settings
+
+```sh
+aws-rds create my-db --adapter=psql
+```
+
+```sh
+aws-rds create my-db --profile=production
+```
+
+## Installation
+
+```sh
+gem install aws-rds
 ```
 
 ## Contributing
