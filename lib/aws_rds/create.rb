@@ -14,7 +14,7 @@ module AwsRds
       pp params
       resp = rds.create_db_instance(params)
       puts "RDS database #{@options[:name]} created! 🎉"
-      puts "Visit https://console.aws.amazon.com/rds/home?#dbinstances: to check on the status"
+      puts "Visit https://console.aws.amazon.com/rds/home?#dbinstances to check on the status"
     end
 
     # params are taken from the profile file
@@ -28,10 +28,15 @@ module AwsRds
       end
 
       defaults = load_profile(default_file)
-      puts "defaults #{defaults.inspect}"
       params = load_profile(profile_file)
-      puts "params #{params.inspect}"
-      defaults.merge(params).symbolize_keys
+      params = defaults.merge(params)
+      params = set_database_identifier(params)
+      params.symbolize_keys
+    end
+
+    def set_database_identifier(params)
+      params['db_instance_identifier'] = @options[:name]
+      params
     end
 
     def load_profile(file)
