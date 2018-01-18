@@ -63,7 +63,7 @@ module AwsRds
     def load_profile(file)
       return {} unless File.exist?(file)
 
-      puts "Using #{file}"
+      puts "Using profile: #{file}"
       data = YAML.load_file(file)
       data ? data : {} # in case the file is empty
     end
