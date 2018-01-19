@@ -1,5 +1,3 @@
-require "byebug"
-
 module AwsRds
   class SecurityGroup
     include AwsServices
