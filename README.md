@@ -1,6 +1,6 @@
 # AWS RDS Tool
 
-Simple tool to create AWS RDS db instances with some pre-configured settings.  The pre-configured settings are stored in profile files in the profiles folder of the current directory.
+Simple tool to create AWS RDS db instances consistently with pre-configured settings.  The pre-configured settings are stored in files in the profiles folder of the current directory.
 
 For example, say you have:
 
@@ -15,7 +15,12 @@ Then `my-db.yml` gets combined with `default.yml` profile.  The `default.yml` ta
 $ aws-rds create my-db --profile my-db --db-name mydbname
 ```
 
-By convention, the profile is name of the db.  So the command above can be shortened to:
+* my-db will be the RDS database identifier show on the AWS console
+* mydbname is the database name that contains the tables
+
+## Convention
+
+By convention, the profile is name of the db.  So the command above could be shortened to:
 
 ```
 $ aws-rds create my-db --db-name mydbname
