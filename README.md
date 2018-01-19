@@ -42,6 +42,15 @@ aws-rds create mydb --security-group-name mydb --profile mydb
 aws-rds create mydb # same as above
 ```
 
+## More Help
+
+```sh
+aws-rds create help
+aws-rds help # general help
+```
+
+Examples are in the [example](example) folder.  You will have to update settings.
+
 ## Installation
 
 ```sh
