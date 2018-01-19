@@ -11,7 +11,7 @@ module AwsRds
 
     def run
       puts "Creating RDS database #{@options[:name]} with the following parameters:"
-      pp params
+      pretty_display(params)
       if @options[:noop]
         puts "NOOP mode enabled. RDS instance not created."
         return
@@ -27,7 +27,13 @@ module AwsRds
       params = load_profiles(profile_name)
       params = use_database_cli_options(params)
       params = set_security_groups(params)
+      params = set_db_subnet_group(params)
       params.symbolize_keys
+    end
+
+    def set_db_subnet_group(params)
+      params["db_subnet_group_name"] ||= AwsRds.config["db_subnet_group_name"]
+      params
     end
 
     def set_security_groups(params)
@@ -90,6 +96,11 @@ module AwsRds
 
     def root
       ENV['AWS_RDS_ROOT'] || '.'
+    end
+
+    def pretty_display(data)
+      data = data.deep_stringify_keys
+      puts YAML.dump(data)
     end
   end
 end

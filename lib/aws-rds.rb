@@ -8,4 +8,8 @@ module AwsRds
   autoload :AwsServices, "aws_rds/aws_services"
   autoload :Create, "aws_rds/create"
   autoload :SecurityGroup, "aws_rds/security_group"
+  autoload :Config, "aws_rds/config"
+  autoload :Core, "aws_rds/core"
+
+  extend Core
 end
