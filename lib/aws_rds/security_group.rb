@@ -20,10 +20,11 @@ module AwsRds
         description: name,
         vpc_id: AwsRds.config["vpc_id"],
       )
-      ec2.create_tags(
-        resources: [result.group_id],
-        tags: [{ key: "Name", value: name }],
-      )
+      # TODO: add waiter
+      # ec2.create_tags(
+      #   resources: [result.group_id],
+      #   tags: [{ key: "Name", value: name }],
+      # )
       resp = ec2.describe_security_groups(group_ids: [result.group_id])
       resp.security_groups.first
     end
