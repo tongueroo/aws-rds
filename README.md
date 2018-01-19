@@ -16,7 +16,7 @@ aws-rds create mydb --profile mydb --db-name mydbname
 * mydb will be the RDS database identifier show on the AWS console
 * mydbname is the database name that contains the tables
 
-In a nutshell, the profile parameters are passed to the ruby aws-sdk [AWS::RDS::Client#create_db_instance](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/Client.html#create_db_instance-instance_method) method.  So you can specify any parameter you wish that is available there.
+In a nutshell, the profile parameters are passed to the ruby aws-sdk [AWS::RDS::Client#create_db_instance](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/Client.html#create_db_instance-instance_method) method.  So you can specify any parameter you wish that is available there.  To check out what a profile looks like check out the (example default](example/profiles/default.yml)
 
 ## config
 
