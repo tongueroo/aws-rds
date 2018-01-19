@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = AwsRds::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.description   = %q{RDS db creation tool}
-  spec.summary       = %q{RDS db creation tool}
+  spec.description   = %q{Simple tool to create AWS RDS db instances consistently with pre-configured settings}
+  spec.summary       = %q{RDS DB creation tool}
   spec.homepage      = "https://github.com/tongueroo/aws-rds"
   spec.license       = "MIT"
 
@@ -29,7 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "guard"
-  spec.add_development_dependency "guard-bundler"
-  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "rspec"
 end
