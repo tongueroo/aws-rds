@@ -1,0 +1,10 @@
+---
+allocated_storage: 20
+db_instance_class: db.t2.micro
+master_user_password: aws-rds
+master_username: aws-rds
+engine: postgres
+
+# db_name: mydb # can be overridden at the cli
+# vpc_security_group_ids: # automatically created for you if not set
+# db_instance_identifier: not respected here. always set from the cli

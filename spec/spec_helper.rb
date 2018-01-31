@@ -1,7 +1,8 @@
 ENV["TEST"] = "1"
-
-# require "simplecov"
-# SimpleCov.start
+ENV["AWS_RDS_ENV"] = "test"
+ENV["AWS_RDS_ROOT"] = "spec/fixtures/demo_project"
+# Ensures aws api never called. Fixture home folder does not contain ~/.aws/credentails
+ENV['HOME'] = "spec/fixtures/home"
 
 require "pp"
 

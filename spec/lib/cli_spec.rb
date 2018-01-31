@@ -7,13 +7,13 @@ require "spec_helper"
 #   $ rake clean:vcr ; time rake
 describe AwsRds::CLI do
   before(:all) do
-    @args = "--from Tung"
+    @args = "--noop"
   end
 
   describe "aws-rds" do
-    it "should hello world" do
-      out = execute("exe/aws-rds hello world #{@args}")
-      expect(out).to include("from: Tung\nHello world")
+    it "create" do
+      out = execute("exe/aws-rds create mydb #{@args}")
+      expect(out).to include("Creating")
     end
   end
 end
