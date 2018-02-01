@@ -26,6 +26,9 @@ class AwsRds::Create
       return params unless @options[:security_group]
       return params if @options[:noop]
 
+      # return early and dont auto-create SG if user has set one
+      return params if params['vpc_security_group_ids']
+
       security_group_name = @options[:security_group_name] || @options[:name]
       sg = AwsRds::SecurityGroup.find_or_create(security_group_name)
       params['vpc_security_group_ids'] ||= [sg.group_id]
