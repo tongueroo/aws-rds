@@ -8,6 +8,7 @@ module AwsRds
   autoload :CLI, "aws_rds/cli"
   autoload :AwsServices, "aws_rds/aws_services"
   autoload :Profile, "aws_rds/profile"
+  autoload :TemplateHelper, "aws_rds/template_helper"
   autoload :Create, "aws_rds/create"
   autoload :SecurityGroup, "aws_rds/security_group"
   autoload :Config, "aws_rds/config"

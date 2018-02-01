@@ -1,5 +1,7 @@
 module AwsRds
   class Profile
+    include TemplateHelper
+
     def initialize(options)
       @options = options
     end
@@ -24,7 +26,7 @@ module AwsRds
       return {} unless File.exist?(file)
 
       puts "Using profile: #{file}"
-      data = YAML.load(IO.read(file))
+      data = YAML.load(erb_result(file))
       data ? data : {} # in case the file is empty
       data.has_key?("create_db_instance") ? data["create_db_instance"] : data
     end
