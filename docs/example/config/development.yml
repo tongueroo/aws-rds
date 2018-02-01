@@ -1,7 +1,7 @@
 ---
-# main vpc_id and db_subnet_group_name are set here.
+# fallback vpc_id and db_subnet_group_name are set here.
 # This could be the AWS default vpc or a custom VPC.
-main:
+fallback:
   # vpc_id is used by the --security-group-name option.
   # The --security-group-name option tells aws-rds to use the existing security group
   # with the specified name.  Or it will create it under the vpc_id if it does

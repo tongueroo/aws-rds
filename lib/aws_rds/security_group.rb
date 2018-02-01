@@ -6,7 +6,7 @@ module AwsRds
     def find_or_create(name)
       resp = ec2.describe_security_groups(
         filters: [
-          {name: 'vpc-id', values: [main_vpc_id]},
+          {name: 'vpc-id', values: [fallback_vpc_id]},
           {name: 'group-name', values: [name]}]
         )
       sg = resp.security_groups.first
@@ -16,7 +16,7 @@ module AwsRds
       result = ec2.create_security_group(
         group_name: name,
         description: name,
-        vpc_id: main_vpc_id,
+        vpc_id: fallback_vpc_id,
       )
       # TODO: add waiter
       # ec2.create_tags(
@@ -27,17 +27,17 @@ module AwsRds
       resp.security_groups.first
     end
 
-    def main_vpc_id
-      AwsRds.config["defaults"]["vpc_id"]
+    def fallback_vpc_id
+      AwsRds.config["fallback"]["vpc_id"]
     rescue NoMethodError => e
       puts e.message
       puts <<-EOL
-Unable to load a default vpc id from your config/#{AwsRds.env}.yml.
-Please specify a default vpc_id setting.
+Unable to load a fallback vpc id from your config/#{AwsRds.env}.yml.
+Please specify a fallback vpc_id setting.
 
 Example config/#{AwsRds.env}.yml:
 ---
-defaults:
+fallback:
   vpc_id: vpc-123
 EOL
       exit 1

@@ -40,23 +40,23 @@ class AwsRds::Create
     end
 
     def set_db_subnet_group(params)
-      params["db_subnet_group_name"] ||= main_db_subnet_group_name
+      params["db_subnet_group_name"] ||= fallback_db_subnet_group_name
       params
     end
 
-    def main_db_subnet_group_name
-      AwsRds.config["defaults"]["db_subnet_group_name"]
+    def fallback_db_subnet_group_name
+      AwsRds.config["fallback"]["db_subnet_group_name"]
     rescue NoMethodError => e
       puts e.message
       puts <<-EOL
-No db_subnet_group_name was specified in your profile. Also, a default db subnet group name was set.
+No db_subnet_group_name was specified in your profile. Also, a fallback db subnet group name was set.
 
-Please add a db_subnet_group_name in your profile file or add a default db_subnet_group_name to your config/#{AwsRds.env}.yml.
+Please add a db_subnet_group_name in your profile file or add a fallback db_subnet_group_name to your config/#{AwsRds.env}.yml.
 
-To specify a default db_subnet_group_name setting. Example config/#{AwsRds.env}.yml:
+To specify a fallback db_subnet_group_name setting. Example config/#{AwsRds.env}.yml:
 
 ---
-defaults:
+fallback:
   db_subnet_group_name: my-db-subnet-group
 EOL
       exit 1
