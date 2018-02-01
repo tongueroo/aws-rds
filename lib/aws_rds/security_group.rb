@@ -12,7 +12,7 @@ module AwsRds
       sg = resp.security_groups.first
       return sg if sg
 
-      puts "Creating security group #{name}"
+      puts "Creating security group #{name}".colorize(:green)
       result = ec2.create_security_group(
         group_name: name,
         description: name,
@@ -30,12 +30,13 @@ module AwsRds
     def fallback_vpc_id
       AwsRds.config["fallback"]["vpc_id"]
     rescue NoMethodError => e
-      puts e.message
+      puts "ERROR: a vpc_id was not specified.".colorize(:red)
       puts <<-EOL
-Unable to load a fallback vpc id from your config/#{AwsRds.env}.yml.
-Please specify a fallback vpc_id setting.
+No vpc_id was specified in your profile. Also, a fallback vpc_id was set.
 
-Example config/#{AwsRds.env}.yml:
+Please add a vpc_id in your profile file or add a fallback vpc_id to your config/#{AwsRds.env}.yml.
+
+To specify a fallback vpc_id setting. Example config/#{AwsRds.env}.yml:
 ---
 fallback:
   vpc_id: vpc-123
