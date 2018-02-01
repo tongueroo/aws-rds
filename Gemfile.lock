@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aws-rds (0.1.2)
+    aws-rds (0.3.0)
       activesupport
       aws-sdk-ec2
       aws-sdk-rds

@@ -1,3 +1,0 @@
----
-vpc_id: vpc-123 # custom main vpc, use this when not specified in profile
-db_subnet_group_name: private-db-subnet-group # private subnet group

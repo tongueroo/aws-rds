@@ -1,0 +1,20 @@
+---
+# main vpc_id and db_subnet_group_name are set here.
+# This could be the AWS default vpc or a custom VPC.
+main:
+  # vpc_id is used by the --security-group-name option.
+  # The --security-group-name option tells aws-rds to use the existing security group
+  # with the specified name.  Or it will create it under the vpc_id if it does
+  # not yet exist.  You can override this in the profile files.
+  vpc_id: vpc-111 # custom main vpc, can also override and profile
+  # db_subnet_group_name used by the create_db_instance command and specifies
+  # a list of subnets that the RDS db can be launched in.  This db_subnet_group_name
+  # needs to belong to the same vpc_id above.  You can also override this in the
+  # profiles.
+  db_subnet_group_name: my-db-subnet-group-name # db subnet group contains private subnets only
+
+# config variables to be used in profiles below.  Example usage:
+#
+#   <%= config["vpc_security_group_ids"].inspect %> in your profile file
+vpc_security_group_ids:
+  - sg-111

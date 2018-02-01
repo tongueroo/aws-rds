@@ -4,7 +4,7 @@ db_instance_class: db.t2.micro
 master_user_password: changeme
 master_username: changeme
 engine: postgres
-
+vpc_security_group_ids: <%= config["vpc_security_group_ids"].inspect %>
 # db_name: mydb # can be overridden at the cli
-# vpc_security_group_ids: # automatically created for you if not set
+# vpc_security_group_ids: # can be also automatically set by specifying --security-group-name at the CLI
 # db_instance_identifier: not respected here. always set from the cli
