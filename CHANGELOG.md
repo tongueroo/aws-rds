@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.6.0]
+- security-group-name option takes the highest precedence, over the the profile vpc_security_group_ids setting
+- improve error messaging
+
 ## [0.5.0]
 - change config/env.yml option name to: fallback vpc_id and db_subnet_group_name
 
